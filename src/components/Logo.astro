@@ -1,0 +1,47 @@
+---
+// Logo SBÉ Institut Dermo-Capillaire - Variante 4 minimaliste
+interface Props {
+  variant?: 'default' | 'light';
+  size?: 'small' | 'medium' | 'large';
+}
+const { variant = 'default', size = 'medium' } = Astro.props;
+
+const colorPrimary = variant === 'light' ? '#ffffff' : '#000000';
+const colorAccent = variant === 'light' ? '#ffffff' : '#276556';
+
+const heights = {
+  small: 40,
+  medium: 50,
+  large: 80,
+};
+const height = heights[size];
+---
+
+<svg
+  viewBox="0 0 280 100"
+  xmlns="http://www.w3.org/2000/svg"
+  style={`height: ${height}px; width: auto;`}
+  aria-label="SBÉ Institut Dermo-Capillaire"
+>
+  <!-- Symbole : cercle + filament -->
+  <g transform="translate(50, 50)">
+    <circle cx="0" cy="0" r="28" fill="none" stroke={colorAccent} stroke-width="1.2"/>
+    <path d="M -38 0 Q -19 -15, 0 0 Q 19 15, 38 0"
+          fill="none" stroke={colorAccent} stroke-width="1" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="1.5" fill={colorAccent}/>
+  </g>
+
+  <!-- SBÉ -->
+  <text x="115" y="55"
+        font-family="Cormorant Garamond, serif"
+        font-size="32" font-weight="400"
+        letter-spacing="4"
+        fill={colorPrimary}>SBÉ</text>
+
+  <!-- Sous-texte -->
+  <text x="115" y="72"
+        font-family="Inter, sans-serif"
+        font-size="7" font-weight="300"
+        letter-spacing="3"
+        fill={colorPrimary}>INSTITUT DERMO-CAPILLAIRE</text>
+</svg>

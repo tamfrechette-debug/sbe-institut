@@ -1,0 +1,50 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  currentPath?: string;
+}
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Accueil' },
+  { href: '/services', label: 'Soins' },
+  { href: '/a-propos', label: 'À propos' },
+  { href: '/reservation', label: 'Réservation' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="site-header">
+  <div class="header-content">
+    <a href="/" class="logo-link" aria-label="Accueil">
+      <Logo size="medium" />
+    </a>
+
+    <nav class="nav" id="mainNav">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class={currentPath === item.href ? 'active' : ''}
+        >
+          {item.label}
+        </a>
+      ))}
+      <span class="lang-switch">FR</span>
+    </nav>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobileMenuBtn');
+  const nav = document.getElementById('mainNav');
+  btn?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+  });
+</script>

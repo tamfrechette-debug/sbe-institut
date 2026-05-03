@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Réservation" currentPath="/reservation" description="Réservez votre soin en ligne chez SBÉ Institut Dermo-Capillaire. Disponible 24h/24, 7 jours sur 7.">
+
+  <!-- HERO -->
+  <section class="hero" style="min-height: 40vh;">
+    <div class="hero-content">
+      <span class="eyebrow">Réservation</span>
+      <h1>Prendre rendez-vous</h1>
+      <p class="tagline">Réservez en quelques clics, à tout moment</p>
+    </div>
+  </section>
+
+  <!-- WIDGET SQUARE -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="square-embed" id="square-embed">
+        <!-- 
+          Placeholder pour le widget Square Appointments.
+          
+          Une fois le compte Square configuré, remplacer ce contenu par :
+          - Soit le code embed fourni par Square
+          - Soit un iframe pointant vers la page de réservation Square
+          
+          Pour l'instant, on redirige vers le lien Square.
+        -->
+        <div style="text-align: center; padding: 3rem 1rem;">
+          <h3 style="margin-bottom: 1rem;">Système de réservation</h3>
+          <p style="margin-bottom: 2rem; color: var(--gris-texte);">
+            Pour réserver votre rendez-vous, cliquez sur le bouton ci-dessous.
+            Vous serez redirigé(e) vers notre système de réservation sécurisé.
+          </p>
+          <a 
+            href="https://book.squareup.com/" 
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+            id="square-booking-link"
+          >
+            Réserver en ligne
+          </a>
+          <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--gris-texte);">
+            Lien de réservation à configurer une fois Square activé
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLITIQUE D'ANNULATION -->
+  <section class="section-creme">
+    <div class="container-narrow">
+      <span class="eyebrow">À savoir avant de réserver</span>
+      <h2>Politique d'annulation</h2>
+      <div class="divider" style="margin-left: 0;"></div>
+
+      <p style="font-size: 1.05rem;">
+        Chaque rendez-vous vous est entièrement réservé, c'est pourquoi une
+        carte de crédit est requise pour le confirmer. Vous pouvez annuler ou
+        modifier sans frais jusqu'à 24 h avant votre visite. Passé ce délai,
+        des frais de 50 % s'appliquent, et 100 % en cas d'absence sans préavis.
+        Un retard de plus de 15 minutes est considéré comme une annulation
+        tardive.
+      </p>
+      <p style="margin-top: 1rem; font-style: italic;">
+        Merci de votre compréhension — nous avons hâte de vous accueillir.
+      </p>
+
+      <div style="margin-top: 2rem;">
+        <a href="/politiques" class="btn btn-outline">Voir toutes les politiques</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRE-INDICATIONS -->
+  <section>
+    <div class="container-narrow">
+      <span class="eyebrow">Important</span>
+      <h2>Contre-indications</h2>
+      <div class="divider" style="margin-left: 0;"></div>
+
+      <p>
+        Certaines conditions peuvent contre-indiquer nos soins. Si l'une des
+        situations suivantes vous concerne, nous vous remercions de nous en
+        informer à l'avance ou de consulter votre médecin avant de réserver :
+      </p>
+      <ul style="margin: 1.5rem 0 1.5rem 2rem; color: var(--gris-texte);">
+        <li style="margin-bottom: 0.5rem;">Infections cutanées actives</li>
+        <li style="margin-bottom: 0.5rem;">Eczéma, psoriasis ou rosacée en phase active</li>
+        <li style="margin-bottom: 0.5rem;">Peau irritée, brûlée ou récemment traitée</li>
+        <li style="margin-bottom: 0.5rem;">Troubles de la cicatrisation</li>
+        <li style="margin-bottom: 0.5rem;">Prise de médicaments anticoagulants</li>
+        <li style="margin-bottom: 0.5rem;">Grossesse</li>
+        <li style="margin-bottom: 0.5rem;">Maladies auto-immunes non stabilisées</li>
+        <li style="margin-bottom: 0.5rem;">Diabète mal contrôlé</li>
+        <li style="margin-bottom: 0.5rem;">Allergies aux produits utilisés</li>
+      </ul>
+      <p style="font-size: 0.95rem; font-style: italic;">
+        En cas de doute, n'hésitez pas à nous contacter avant votre rendez-vous.
+        Une contre-indication identifiée à votre arrivée n'entraîne aucun frais.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

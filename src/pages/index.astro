@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Accueil" currentPath="/">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Institut Dermo-Capillaire</span>
+      <h1>L'expertise au service<br/>de votre bien-être</h1>
+      <p class="tagline">Science, écoute, et solutions personnalisées</p>
+      <p class="description">
+        Un espace dédié à la santé et à la beauté du cuir chevelu et de la peau,
+        où expertise et bien-être se rencontrent pour des résultats durables.
+      </p>
+      <div style="margin-top: 2rem;">
+        <a href="/reservation" class="btn btn-primary">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROCHE -->
+  <section class="section-creme">
+    <div class="container-narrow" style="text-align: center;">
+      <span class="eyebrow">Notre approche</span>
+      <h2>Une vision globale, des résultats durables</h2>
+      <div class="divider"></div>
+      <p style="font-size: 1.1rem;">
+        Spécialisée dans les soins du visage et les traitements capillaires,
+        SBÉ Institut propose une approche globale visant à traiter les problématiques
+        à la source tout en valorisant le bien-être et la confiance en soi.
+      </p>
+      <p style="font-size: 1.1rem;">
+        Grâce à une analyse approfondie et un accompagnement sur mesure, chaque
+        protocole est adapté à votre profil pour des résultats visibles et harmonieux.
+      </p>
+    </div>
+  </section>
+
+  <!-- VALEURS -->
+  <section>
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="eyebrow">Nos engagements</span>
+        <h2>L'institut en quelques mots</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="number">01</span>
+          <h4>Expertise scientifique</h4>
+          <p>Une formation pointue en trichologie et en médico-esthétique pour comprendre vos besoins en profondeur.</p>
+        </div>
+        <div class="value-item">
+          <span class="number">02</span>
+          <h4>Approche personnalisée</h4>
+          <p>Chaque protocole est conçu sur mesure après une analyse complète de votre cuir chevelu ou de votre peau.</p>
+        </div>
+        <div class="value-item">
+          <span class="number">03</span>
+          <h4>Bienveillance & écoute</h4>
+          <p>Un accompagnement éducatif qui vous guide vers une meilleure compréhension de vos besoins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOINS PHARES -->
+  <section class="section-creme">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="eyebrow">Nos soins signature</span>
+        <h2>Une gamme complète de soins</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="duration">90 minutes</span>
+          <h3>Soin Sensoriel</h3>
+          <p class="description">
+            Massage crânien, du cou et des épaules combiné à un soin capillaire
+            relaxant pour une détente intense.
+          </p>
+          <div class="price">125$</div>
+        </div>
+
+        <div class="service-card">
+          <span class="duration">90 minutes</span>
+          <h3>Soin Révélation</h3>
+          <p class="description">
+            L'expérience Sensoriel enrichie d'une analyse capillaire par caméra
+            haute définition pour un diagnostic précis.
+          </p>
+          <div class="price">175$</div>
+        </div>
+
+        <div class="service-card">
+          <span class="duration">90 minutes</span>
+          <h3>Soin Symbiose</h3>
+          <p class="description">
+            L'alliance parfaite entre soin du visage et soin capillaire dans un
+            même rituel complet.
+          </p>
+          <div class="price">199$</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/services" class="btn btn-outline">Découvrir tous les soins</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section>
+    <div class="container">
+      <div class="quote">
+        Une approche professionnelle, bienveillante et éducative,
+        pour des résultats visibles et harmonieux.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA RÉSERVATION -->
+  <section class="section-emeraude">
+    <div class="container-narrow" style="text-align: center;">
+      <span class="eyebrow eyebrow-light">Prendre soin de soi</span>
+      <h2>Prêt(e) à commencer votre parcours?</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+        Réservez votre consultation ou votre soin en ligne, en quelques clics.
+      </p>
+      <a href="/reservation" class="btn btn-outline-light">Prendre rendez-vous</a>
+    </div>
+  </section>
+</BaseLayout>

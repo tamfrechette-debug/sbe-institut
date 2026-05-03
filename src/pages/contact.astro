@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" currentPath="/contact" description="Coordonnées de SBÉ Institut Dermo-Capillaire. Adresse, téléphone, courriel et heures d'ouverture.">
+
+  <!-- HERO -->
+  <section class="hero" style="min-height: 40vh;">
+    <div class="hero-content">
+      <span class="eyebrow">Contact</span>
+      <h1>Nous joindre</h1>
+      <p class="tagline">Pour toute question ou information complémentaire</p>
+    </div>
+  </section>
+
+  <!-- COORDONNÉES -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h4>Adresse</h4>
+          <p>[Adresse de l'institut]<br/>[Ville, Code postal]</p>
+        </div>
+
+        <div class="contact-info">
+          <h4>Téléphone</h4>
+          <p><a href="tel:+1" style="color: var(--noir);">[À configurer]</a></p>
+        </div>
+
+        <div class="contact-info">
+          <h4>Courriel</h4>
+          <p><a href="mailto:contact@sbeinstitut.com" style="color: var(--noir);">contact@sbeinstitut.com</a></p>
+        </div>
+
+        <div class="contact-info">
+          <h4>Heures d'ouverture</h4>
+          <p style="font-size: 0.95rem;">
+            <span style="display: block;">Lundi : [À configurer]</span>
+            <span style="display: block;">Mardi : [À configurer]</span>
+            <span style="display: block;">Mercredi : [À configurer]</span>
+            <span style="display: block;">Jeudi : [À configurer]</span>
+            <span style="display: block;">Vendredi : [À configurer]</span>
+            <span style="display: block;">Samedi : [À configurer]</span>
+            <span style="display: block;">Dimanche : [À configurer]</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-creme">
+    <div class="container-narrow" style="text-align: center;">
+      <h2>Prendre rendez-vous</h2>
+      <p style="margin: 1rem 0 2rem;">
+        La façon la plus rapide de réserver votre soin : en ligne, à toute heure.
+      </p>
+      <a href="/reservation" class="btn btn-primary">Réserver en ligne</a>
+    </div>
+  </section>
+</BaseLayout>
