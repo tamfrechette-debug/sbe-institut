@@ -590,9 +590,11 @@ section {
 }
 
 .square-embed {
-  max-width: 1000px;
-  margin: var(--espace-lg) auto 0;
+  max-width: 1100px;
+  margin: var(--espace-md) auto 0;
   background: var(--blanc);
-  padding: var(--espace-md);
-  border: 1px solid var(--gris-clair);
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(39, 101, 86, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
