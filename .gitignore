@@ -24,3 +24,7 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+src/env.d.ts
+
+# Vercel
+.vercel/
