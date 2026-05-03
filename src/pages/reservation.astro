@@ -17,34 +17,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section style="padding-top: 0;">
     <div class="container">
       <div class="square-embed" id="square-embed">
-        <!-- 
-          Placeholder pour le widget Square Appointments.
-          
-          Une fois le compte Square configuré, remplacer ce contenu par :
-          - Soit le code embed fourni par Square
-          - Soit un iframe pointant vers la page de réservation Square
-          
-          Pour l'instant, on redirige vers le lien Square.
-        -->
-        <div style="text-align: center; padding: 3rem 1rem;">
-          <h3 style="margin-bottom: 1rem;">Système de réservation</h3>
-          <p style="margin-bottom: 2rem; color: var(--gris-texte);">
-            Pour réserver votre rendez-vous, cliquez sur le bouton ci-dessous.
-            Vous serez redirigé(e) vers notre système de réservation sécurisé.
-          </p>
-          <a 
-            href="https://book.squareup.com/" 
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener"
-            id="square-booking-link"
-          >
-            Réserver en ligne
-          </a>
-          <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--gris-texte);">
-            Lien de réservation à configurer une fois Square activé
-          </p>
-        </div>
+        <script is:inline src="https://square.site/appointments/buyer/widget/22zy2471w6xot4/LJ1FQ816N54Y2.js"></script>
+        <noscript>
+          <div style="text-align: center; padding: 2rem 1rem;">
+            <p>
+              Pour réserver, veuillez activer JavaScript dans votre navigateur,
+              ou nous contacter directement au
+              <a href="tel:+18193426941">(819) 342-6941</a>.
+            </p>
+          </div>
+        </noscript>
       </div>
     </div>
   </section>
