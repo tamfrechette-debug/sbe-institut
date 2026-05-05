@@ -366,7 +366,7 @@ section {
 }
 
 .logo-link svg {
-  height: 50px;
+  height: 80px;
   width: auto;
 }
 
@@ -597,4 +597,90 @@ section {
   border-radius: 16px;
   box-shadow: 0 16px 48px rgba(39, 101, 86, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow: hidden;
+}
+
+/* Info banner (e.g., Headspa availability) */
+.info-banner {
+  padding: var(--espace-sm) var(--espace-md);
+  background: var(--creme);
+  border-left: 3px solid var(--vert-emeraude);
+  border-radius: 8px;
+}
+
+.info-banner p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--gris-texte);
+}
+
+.info-banner strong {
+  color: var(--noir);
+}
+
+/* Departments grid (homepage) */
+.departments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espace-md);
+  margin-top: var(--espace-lg);
+}
+
+.department-card {
+  background: var(--blanc);
+  padding: var(--espace-lg) var(--espace-md);
+  text-align: center;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.department-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(39, 101, 86, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.department-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--espace-md);
+  color: var(--vert-emeraude);
+}
+
+.department-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.department-card h3 {
+  margin-bottom: var(--espace-sm);
+  font-size: 1.4rem;
+}
+
+.department-card p {
+  margin-bottom: var(--espace-md);
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.department-card p em {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--vert-emeraude);
+  font-style: normal;
+  letter-spacing: 0.5px;
+}
+
+.department-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--vert-emeraude);
+  margin-top: auto;
+}
+
+.department-link:hover {
+  color: var(--vert-foret);
 }

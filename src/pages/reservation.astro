@@ -16,6 +16,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- WIDGET SQUARE -->
   <section style="padding-top: 0;">
     <div class="container">
+      <div class="info-banner" style="max-width: 1100px; margin: 0 auto var(--espace-md);">
+        <p>
+          <strong>À noter :</strong> les soins Headspa sont disponibles
+          uniquement les <strong>mercredis</strong> et <strong>vendredis</strong>.
+        </p>
+      </div>
       <div class="square-embed" id="square-embed">
         <script is:inline src="https://square.site/appointments/buyer/widget/22zy2471w6xot4/LJ1FQ816N54Y2.js"></script>
         <noscript>
@@ -42,7 +48,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Chaque rendez-vous vous est entièrement réservé, c'est pourquoi une
         carte de crédit est requise pour le confirmer. Vous pouvez annuler ou
         modifier sans frais jusqu'à 24 h avant votre visite. Passé ce délai,
-        des frais de 50 % s'appliquent, et 100 % en cas d'absence sans préavis.
+        des frais de 50 % s'appliquent.
         Un retard de plus de 15 minutes est considéré comme une annulation
         tardive.
       </p>
@@ -69,6 +75,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         informer à l'avance ou de consulter votre médecin avant de réserver :
       </p>
       <ul style="margin: 1.5rem 0 1.5rem 2rem; color: var(--gris-texte);">
+        <li style="margin-bottom: 0.5rem;">Cancer actif ou récent</li>
         <li style="margin-bottom: 0.5rem;">Infections cutanées actives</li>
         <li style="margin-bottom: 0.5rem;">Eczéma, psoriasis ou rosacée en phase active</li>
         <li style="margin-bottom: 0.5rem;">Peau irritée, brûlée ou récemment traitée</li>
