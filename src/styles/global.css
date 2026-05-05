@@ -130,6 +130,64 @@ html {
   transition: transform 0.4s ease;
 }
 
+/* === Reveal en cascade dans les grilles === */
+.is-visible .departments-grid > *,
+.is-visible .values-grid > *,
+.is-visible .services-grid > * {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.is-visible .departments-grid > *:nth-child(1),
+.is-visible .values-grid > *:nth-child(1),
+.is-visible .services-grid > *:nth-child(1) { animation-delay: 0.1s; }
+.is-visible .departments-grid > *:nth-child(2),
+.is-visible .values-grid > *:nth-child(2),
+.is-visible .services-grid > *:nth-child(2) { animation-delay: 0.25s; }
+.is-visible .departments-grid > *:nth-child(3),
+.is-visible .values-grid > *:nth-child(3),
+.is-visible .services-grid > *:nth-child(3) { animation-delay: 0.4s; }
+.is-visible .values-grid > *:nth-child(4) { animation-delay: 0.55s; }
+
+/* === Sticky header : ombre subtile au scroll === */
+.site-header {
+  transition: box-shadow 0.4s ease, background 0.3s ease;
+}
+.site-header.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+/* === Logo wave : floating doux infini === */
+@keyframes wave-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+.logo-svg path {
+  animation: wave-float 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* === Scrollbar custom (desktop seulement, mobile garde son scroll natif) === */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--creme);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--vert-emeraude);
+    border-radius: 5px;
+    border: 2px solid var(--creme);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--vert-foret);
+  }
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--vert-emeraude) var(--creme);
+  }
+}
+
 /* Respect user accessibility preference */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

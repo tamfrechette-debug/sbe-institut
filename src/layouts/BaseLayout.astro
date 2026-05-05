@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -38,6 +39,9 @@ const {
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
   <title>{title} | SBÉ Institut Dermo-Capillaire</title>
+
+  <!-- Transitions de page fluides entre routes -->
+  <ViewTransitions />
 </head>
 <body>
   <Header currentPath={currentPath} />
@@ -46,12 +50,12 @@ const {
   </main>
   <Footer />
 
-  <!-- Scroll-reveal animation: sections fade-in en arrivant dans le viewport -->
+  <!-- Scroll-reveal + header shadow on scroll. Re-init après chaque navigation View Transition. -->
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Si l'utilisateur préfère pas d'animations → on fait rien
+    function initAnimations() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+      // === Scroll reveal ===
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -61,12 +65,26 @@ const {
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-      // Cible : enfants directs des <section> (sauf hero qui a sa propre animation cascade)
       document.querySelectorAll('section:not(.hero) > .container, section:not(.hero) > .container-narrow').forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
       });
-    });
+
+      // === Header shadow on scroll ===
+      const header = document.querySelector('.site-header');
+      const onScroll = () => {
+        if (!header) return;
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', initAnimations);
+    // Astro View Transitions: re-init après chaque changement de page
+    document.addEventListener('astro:page-load', initAnimations);
   </script>
 </body>
 </html>
