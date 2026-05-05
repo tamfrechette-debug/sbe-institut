@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Hauteur du widget Square calculée à partir du nombre de services.
+// Quand tu ajoutes/retires un service dans Square, mets à jour ce nombre.
+const NB_SOINS_SQUARE = 16;
+const hauteurSquare = Math.max(900, 250 + NB_SOINS_SQUARE * 75);
 ---
 
 <BaseLayout title="Réservation" currentPath="/reservation" description="Réservez votre soin en ligne chez SBÉ Institut Dermo-Capillaire. Disponible 24h/24, 7 jours sur 7.">
@@ -22,7 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           uniquement les <strong>mercredis</strong> et <strong>vendredis</strong>.
         </p>
       </div>
-      <div class="square-embed" id="square-embed">
+      <div class="square-embed" id="square-embed" style={`--square-height: ${hauteurSquare}px;`}>
         <script is:inline src="https://square.site/appointments/buyer/widget/22zy2471w6xot4/LJ1FQ816N54Y2.js"></script>
         <noscript>
           <div style="text-align: center; padding: 2rem 1rem;">

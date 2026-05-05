@@ -616,23 +616,14 @@ section {
   border-radius: 16px;
   box-shadow: 0 16px 48px rgba(39, 101, 86, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  min-height: 1200px;
+  min-height: var(--square-height, 1200px);
 }
 
 .square-embed iframe {
   width: 100% !important;
-  min-height: 1200px !important;
+  min-height: var(--square-height, 1200px) !important;
   border: 0 !important;
   display: block;
-}
-
-@media (max-width: 768px) {
-  .square-embed {
-    min-height: 1400px; /* services list stacks vertically on mobile, needs more height */
-  }
-  .square-embed iframe {
-    min-height: 1400px !important;
-  }
 }
 
 /* Info banner (e.g., Headspa availability) */
