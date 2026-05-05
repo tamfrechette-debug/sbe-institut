@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Cartes-cadeaux" currentPath="/cartes-cadeaux" description="Offrez le Certificat SBÉ : un moment d'attention véritable. Soins de trichologie, esthétique avancée et bien-être à l'institut SBÉ Dermo-Capillaire. Livré par courriel.">
+
+  <!-- HERO -->
+  <section class="hero" style="min-height: 40vh;">
+    <div class="hero-content">
+      <span class="eyebrow">Cartes-cadeaux</span>
+      <h1>Offrir le Certificat SBÉ</h1>
+      <p class="tagline">Un moment d'attention véritable, à offrir</p>
+    </div>
+  </section>
+
+  <!-- PRÉVISUALISATION + DESCRIPTION -->
+  <section style="padding-top: var(--espace-lg);">
+    <div class="container-narrow">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--espace-lg); align-items: center; margin-bottom: var(--espace-xl);">
+        <div>
+          <img
+            src="/cartes-cadeaux/preview.png"
+            alt="Aperçu du Certificat SBÉ"
+            style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 12px 40px rgba(39, 101, 86, 0.12);"
+          />
+        </div>
+        <div>
+          <p style="font-size: 1.1rem; line-height: 1.8;">
+            Offrez bien plus qu'un soin : offrez un moment d'attention.
+          </p>
+          <p style="margin-top: var(--espace-sm);">
+            Le Certificat SBÉ donne accès à l'ensemble des soins de l'institut —
+            <strong>trichologie</strong>, <strong>esthétique avancée</strong> et
+            <strong>rituels Headspa</strong> — et permet à la personne qui le reçoit
+            de choisir l'expérience qui lui ressemble.
+          </p>
+          <p style="margin-top: var(--espace-sm);">
+            Une approche scientifique alliée à un savoir-faire bienveillant,
+            dans un espace dédié à la santé et à la beauté du cuir chevelu et
+            de la peau.
+          </p>
+          <ul style="margin-top: var(--espace-md); list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.5rem;">✦ Valide 12 mois à compter de la date d'achat</li>
+            <li style="margin-bottom: 0.5rem;">✦ Applicable sur l'ensemble des services</li>
+            <li style="margin-bottom: 0.5rem;">✦ Livré par courriel après l'achat</li>
+            <li style="margin-bottom: 0.5rem;">✦ Réservation par téléphone ou en ligne</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIDGET SQUARE GIFT CARD (iframe) -->
+  <section class="section-creme" style="padding-top: var(--espace-lg);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--espace-md);">
+        <span class="eyebrow">Acheter en ligne</span>
+        <h2>Choisissez votre montant</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="gift-embed">
+        <iframe
+          src="https://app.squareup.com/gift/ML5FSF027RPC0/order"
+          title="Achat de Certificat SBÉ — système sécurisé Square"
+          loading="lazy"
+          allow="payment"
+        ></iframe>
+        <noscript>
+          <div style="text-align: center; padding: var(--espace-md);">
+            <p>Pour acheter une carte-cadeau, veuillez activer JavaScript ou
+            <a href="https://app.squareup.com/gift/ML5FSF027RPC0/order" target="_blank" rel="noopener">
+              cliquer ici pour ouvrir le système sécurisé Square ↗
+            </a></p>
+          </div>
+        </noscript>
+      </div>
+
+      <p style="text-align: center; margin-top: var(--espace-md); font-size: 0.9rem; color: var(--gris-texte);">
+        Si le module ne s'affiche pas correctement,
+        <a href="https://app.squareup.com/gift/ML5FSF027RPC0/order" target="_blank" rel="noopener" style="color: var(--vert-emeraude);">ouvrez la page sécurisée Square dans un nouvel onglet ↗</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section>
+    <div class="container-narrow">
+      <span class="eyebrow">Bon à savoir</span>
+      <h2>Conditions</h2>
+      <div class="divider" style="margin-left: 0;"></div>
+
+      <ul style="margin-top: var(--espace-md);">
+        <li style="margin-bottom: 0.75rem;">Le certificat est valide pendant <strong>12 mois</strong> à compter de la date d'achat.</li>
+        <li style="margin-bottom: 0.75rem;">Il s'applique sur l'<strong>ensemble des services offerts</strong> à l'institut, sans restriction de catégorie.</li>
+        <li style="margin-bottom: 0.75rem;"><strong>Transférable</strong> à un tiers — la personne qui le reçoit peut l'utiliser ou le partager.</li>
+        <li style="margin-bottom: 0.75rem;"><strong>Non remboursable</strong> en argent, mais peut être utilisé en plusieurs visites jusqu'à épuisement du montant.</li>
+        <li style="margin-bottom: 0.75rem;">La <strong>politique d'annulation</strong> habituelle s'applique aux rendez-vous payés avec un certificat.</li>
+      </ul>
+
+      <p style="margin-top: var(--espace-md); font-style: italic; color: var(--gris-texte);">
+        Pour toute question, n'hésitez pas à nous écrire à
+        <a href="mailto:institutsbe@gmail.com">institutsbe@gmail.com</a>
+        ou à appeler au <a href="tel:+18193426941">(819) 342-6941</a>.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .gift-embed {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--blanc);
+    border-radius: 16px;
+    box-shadow: 0 16px 48px rgba(39, 101, 86, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+  .gift-embed iframe {
+    width: 100%;
+    min-height: 900px;
+    border: 0;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .gift-embed iframe {
+      min-height: 1100px;
+    }
+    /* Stack preview image and description on mobile */
+    section .container-narrow > div[style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
