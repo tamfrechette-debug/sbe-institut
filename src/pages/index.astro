@@ -83,12 +83,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="department-card">
           <div class="department-icon">
             <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M 16 42 Q 16 20, 32 14 Q 48 20, 48 42"/>
-              <line x1="22" y1="42" x2="22" y2="50"/>
-              <line x1="28" y1="42" x2="28" y2="52"/>
-              <line x1="32" y1="42" x2="32" y2="54"/>
-              <line x1="36" y1="42" x2="36" y2="52"/>
-              <line x1="42" y1="42" x2="42" y2="50"/>
+              <!-- Surface de la peau -->
+              <line x1="12" y1="40" x2="52" y2="40"/>
+              <!-- Bulbe du follicule (sous la peau) -->
+              <ellipse cx="32" cy="48" rx="5" ry="7"/>
+              <!-- Cheveu qui pousse vers le haut -->
+              <path d="M 32 41 Q 30 30, 33 20 Q 34 14, 32 8"/>
             </svg>
           </div>
           <h3>Trichologie & soins capillaires</h3>
@@ -102,10 +102,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="department-card">
           <div class="department-icon">
             <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M 32 12 C 22 12, 16 22, 16 36 C 16 48, 24 54, 32 54 C 40 54, 48 48, 48 36 C 48 22, 42 12, 32 12 Z"/>
-              <path d="M 24 32 Q 32 38, 40 32"/>
-              <circle cx="26" cy="28" r="0.8" fill="currentColor"/>
-              <circle cx="38" cy="28" r="0.8" fill="currentColor"/>
+              <!-- Profil de visage tourné vers la droite -->
+              <path d="M 22 14
+                       Q 28 8 34 10
+                       Q 42 14 42 22
+                       Q 42 26 40 28
+                       L 46 32
+                       L 40 34
+                       Q 40 38 38 40
+                       Q 40 44 36 46
+                       Q 36 50 32 52
+                       Q 28 54 24 52
+                       Q 16 48 16 32
+                       Q 16 18 22 14 Z"/>
             </svg>
           </div>
           <h3>Esthétique avancée</h3>
@@ -119,11 +128,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="department-card">
           <div class="department-icon">
             <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="32" cy="32" r="14"/>
-              <path d="M 6 28 Q 11 23, 16 28"/>
-              <path d="M 6 36 Q 11 31, 16 36"/>
-              <path d="M 48 28 Q 53 23, 58 28"/>
-              <path d="M 48 36 Q 53 31, 58 36"/>
+              <!-- Goutte d'eau -->
+              <path d="M 32 10 C 26 22, 22 30, 32 34 C 42 30, 38 22, 32 10 Z"/>
+              <!-- Ondulations (3 ellipses qui s'agrandissent) -->
+              <ellipse cx="32" cy="42" rx="8" ry="2"/>
+              <ellipse cx="32" cy="48" rx="14" ry="2.5"/>
+              <ellipse cx="32" cy="54" rx="20" ry="3"/>
             </svg>
           </div>
           <h3>Headspa</h3>
