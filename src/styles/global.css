@@ -548,6 +548,18 @@ section {
   margin: var(--espace-md) auto;
 }
 
+.quote-signature {
+  display: block;
+  margin-top: var(--espace-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-style: normal;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--vert-emeraude);
+  font-weight: 500;
+}
+
 /* Liste de valeurs */
 .values-grid {
   display: grid;
