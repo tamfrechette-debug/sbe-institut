@@ -42,6 +42,104 @@ html {
   font-size: 16px;
 }
 
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Hero load: cascade entrance */
+.hero-content > * {
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.7s; }
+
+/* Scroll reveal: applied by JS in BaseLayout */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle card lift (services) */
+.service-card,
+.service-detail {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(39, 101, 86, 0.08);
+}
+.service-detail:hover {
+  transform: translateX(4px);
+}
+
+/* Logo subtle hover */
+.logo-link {
+  transition: opacity 0.3s ease;
+}
+.logo-link:hover {
+  opacity: 0.78;
+}
+
+/* Buttons: lift on hover */
+.btn {
+  transform: translateY(0);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(39, 101, 86, 0.15);
+}
+
+/* Navigation links: subtle underline animation */
+.nav a {
+  position: relative;
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--vert-emeraude);
+  transition: width 0.3s ease;
+}
+.nav a:hover::after,
+.nav a.active::after {
+  width: 100%;
+}
+
+/* Department icon: subtle pulse on card hover */
+.department-card:hover .department-icon {
+  transform: scale(1.06);
+  transition: transform 0.4s ease;
+}
+
+/* Respect user accessibility preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   font-weight: 300;

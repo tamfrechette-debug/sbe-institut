@@ -45,5 +45,28 @@ const {
     <slot />
   </main>
   <Footer />
+
+  <!-- Scroll-reveal animation: sections fade-in en arrivant dans le viewport -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Si l'utilisateur préfère pas d'animations → on fait rien
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+      // Cible : enfants directs des <section> (sauf hero qui a sa propre animation cascade)
+      document.querySelectorAll('section:not(.hero) > .container, section:not(.hero) > .container-narrow').forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>
