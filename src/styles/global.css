@@ -333,6 +333,25 @@ section {
   white-space: nowrap;
 }
 
+.service-detail-actions {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+.service-reserve-link {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--vert-emeraude);
+  transition: color 0.3s ease;
+}
+
+.service-reserve-link:hover {
+  color: var(--vert-foret);
+}
+
 /* Catégorie de services */
 .service-category {
   margin-bottom: var(--espace-2xl);
