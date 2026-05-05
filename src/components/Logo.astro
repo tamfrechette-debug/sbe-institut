@@ -8,19 +8,12 @@ const { variant = 'default', size = 'medium' } = Astro.props;
 
 const colorPrimary = variant === 'light' ? '#ffffff' : '#000000';
 const colorAccent = variant === 'light' ? '#ffffff' : '#276556';
-
-const heights = {
-  small: 40,
-  medium: 50,
-  large: 80,
-};
-const height = heights[size];
 ---
 
 <svg
   viewBox="0 0 340 100"
   xmlns="http://www.w3.org/2000/svg"
-  style={`height: ${height}px; width: auto;`}
+  class={`logo-svg logo-${size}`}
   aria-label="SBÉ Institut Dermo-Capillaire"
 >
   <!-- Symbole : cercle + filament -->

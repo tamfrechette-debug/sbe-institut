@@ -174,6 +174,19 @@ section {
   color: var(--vert-emeraude);
 }
 
+/* Brand mark — name display, used prominently on home hero */
+.brand-mark {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: clamp(8px, 2vw, 14px);
+  color: var(--vert-emeraude);
+  margin-bottom: var(--espace-md);
+  display: block;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
 /* Texte décoratif */
 .eyebrow {
   font-family: var(--font-sans);
@@ -366,9 +379,13 @@ section {
 }
 
 .logo-link svg {
-  height: 80px;
   width: auto;
+  display: block;
 }
+
+.logo-small { height: 40px; }
+.logo-medium { height: 60px; }
+.logo-large { height: 120px; }
 
 .nav {
   display: flex;
@@ -468,6 +485,8 @@ section {
   .mobile-menu-btn {
     display: block;
   }
+  .logo-large { height: 70px; }
+  .logo-medium { height: 50px; }
   .nav.open {
     display: flex;
     position: absolute;
