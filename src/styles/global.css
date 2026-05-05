@@ -688,7 +688,7 @@ section {
 
 .department-icon {
   width: 64px;
-  height: 96px;
+  height: 80px;
   margin: 0 auto var(--espace-md);
   color: var(--vert-emeraude);
   display: flex;
@@ -703,8 +703,7 @@ section {
 
 /* Portrait-aspect icon (e.g., face profile illustration) */
 .department-icon-portrait img {
-  max-width: 100%;
-  max-height: 96px;
+  max-height: 80px;
   width: auto;
   height: auto;
   display: block;
