@@ -772,13 +772,17 @@ section {
   opacity: 0.7;
 }
 
-/* Mobile menu */
+/* Mobile menu — bouton hamburger / close */
 .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-menu-btn svg {
@@ -787,16 +791,18 @@ section {
   stroke: var(--noir);
 }
 
-@media (max-width: 768px) {
+.mobile-menu-btn .icon-close { display: none; }
+.site-header.menu-open .mobile-menu-btn .icon-burger { display: none; }
+.site-header.menu-open .mobile-menu-btn .icon-close { display: block; }
+
+/* === Tablette + mobile : hamburger remplace la nav === */
+@media (max-width: 1024px) {
   .nav {
     display: none;
   }
   .mobile-menu-btn {
-    display: block;
-    padding: 0.6rem; /* zone tactile plus large (44x44 minimum recommandé) */
+    display: inline-flex;
   }
-  .logo-large { height: 70px; }
-  .logo-medium { height: 50px; }
   .nav.open {
     display: flex;
     position: absolute;
@@ -806,50 +812,98 @@ section {
     background: var(--blanc);
     flex-direction: column;
     padding: var(--espace-md);
+    gap: 0;
     border-bottom: 1px solid var(--creme-fonce);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    max-height: calc(100vh - 100%);
+    overflow-y: auto;
   }
-  /* Liens du menu mobile : zone tactile généreuse */
   .nav.open a {
-    padding: 0.75rem 0;
+    padding: 0.85rem 0;
     font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
+  .nav.open a:last-of-type {
+    border-bottom: none;
+  }
+  .nav.open .lang-switch {
+    margin-top: 0.5rem;
+    padding-left: 0;
+    padding-top: 0.85rem;
+    border-left: none;
+    border-top: 1px solid var(--creme-fonce);
+  }
+}
+
+/* === Mobile (téléphones) : spacing et logo réduits === */
+@media (max-width: 768px) {
+  .logo-large { height: 70px; }
+  .logo-medium { height: 50px; }
   section {
     padding: var(--espace-lg) 0;
   }
   .hero {
     min-height: 60vh;
   }
+  /* Header sticky : retirer le backdrop-filter (coûteux sur iOS Safari ancien) */
+  .site-header {
+    backdrop-filter: none;
+    background: var(--blanc);
+  }
 }
 
-/* === Petits écrans : tweaks supplémentaires === */
+/* === Petits écrans (≤480px) : tweaks supplémentaires === */
 @media (max-width: 480px) {
   .hero:not(.hero-home) {
-    min-height: 45vh; /* moins envahissant sur petit mobile, sauf accueil */
+    min-height: 45vh;
   }
-  /* Réduire le padding vertical des sections sur très petit écran */
   section {
     padding: var(--espace-lg) 0;
   }
-  /* Cartes département plus aérées (compense la stack 1 col) */
   .department-card {
     padding: var(--espace-md) var(--espace-sm);
   }
-  /* Boutons : plus de padding tactile */
   .btn {
     padding: 0.95rem 1.8rem;
     font-size: 0.85rem;
     letter-spacing: 1.5px;
   }
+  /* Hero h1 : retirer le br forcé pour éviter wrap awkward */
+  .hero-home h1 br { display: none; }
+  /* Service-detail-grid : empiler titre/prix sur petit mobile */
+  .service-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .service-detail-price {
+    font-size: 1.3rem;
+  }
+  .service-detail-actions {
+    text-align: left;
+  }
+  /* Hero orbes : désactiver sur petit mobile (perf + visuel encombré) */
+  .hero-home::before,
+  .hero-home::after { display: none; }
 }
 
-/* Mobile : désactiver les hover transforms (trompeurs sur écrans tactiles) */
+/* === Touch / curseur grossier : neutraliser les :hover qui collent === */
 @media (hover: none) {
-  .service-detail:hover {
+  .service-detail:hover,
+  .service-card:hover,
+  .department-card:hover {
     transform: none;
+    box-shadow: none;
+    border-color: var(--gris-clair);
   }
   .btn:hover {
     transform: none;
     box-shadow: none;
+  }
+  .logo-link:hover {
+    opacity: 1;
+  }
+  .nav a::after {
+    display: none;
   }
 }
 

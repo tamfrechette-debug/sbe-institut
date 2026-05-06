@@ -22,7 +22,7 @@ const navItems = [
       <Logo size="large" />
     </a>
 
-    <nav class="nav" id="mainNav">
+    <nav class="nav" id="mainNav" aria-label="Navigation principale">
       {navItems.map(item => (
         <a
           href={item.href}
@@ -34,18 +34,75 @@ const navItems = [
       <span class="lang-switch">FR</span>
     </nav>
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
+      <svg class="icon-burger" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+      </svg>
+      <svg class="icon-close" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>
       </svg>
     </button>
   </div>
 </header>
 
-<script>
-  const btn = document.getElementById('mobileMenuBtn');
-  const nav = document.getElementById('mainNav');
-  btn?.addEventListener('click', () => {
-    nav?.classList.toggle('open');
-  });
+<script is:inline>
+  // setOpen lit le DOM courant à chaque appel (nouveau DOM après une View Transition)
+  function setMobileMenuOpen(open) {
+    const btn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('mainNav');
+    const header = document.querySelector('.site-header');
+    if (!btn || !nav || !header) return;
+    nav.classList.toggle('open', open);
+    header.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  function isMobileMenuOpen() {
+    return !!document.getElementById('mainNav')?.classList.contains('open');
+  }
+
+  // Listeners globaux : bind UNE seule fois pour toute la session (pas par navigation)
+  if (!window.__sbeMenuGlobalsBound) {
+    window.__sbeMenuGlobalsBound = true;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMobileMenuOpen()) setMobileMenuOpen(false);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!isMobileMenuOpen()) return;
+      const header = document.querySelector('.site-header');
+      if (header && header.contains(e.target)) return;
+      setMobileMenuOpen(false);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024 && isMobileMenuOpen()) setMobileMenuOpen(false);
+    });
+
+    document.addEventListener('astro:before-preparation', () => {
+      if (isMobileMenuOpen()) setMobileMenuOpen(false);
+    });
+  }
+
+  // Listeners locaux au DOM courant (btn et nav re-rendus à chaque navigation)
+  function bindMobileMenu() {
+    const btn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('mainNav');
+    if (!btn || !nav) return;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setMobileMenuOpen(!isMobileMenuOpen());
+    });
+
+    nav.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLAnchorElement) setMobileMenuOpen(false);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', bindMobileMenu);
+  document.addEventListener('astro:page-load', bindMobileMenu);
 </script>
