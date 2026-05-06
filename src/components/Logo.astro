@@ -17,21 +17,21 @@ const colorAccent = variant === 'light' ? '#ffffff' : '#276556';
   aria-label="SBÉ Institut Dermo-Capillaire"
 >
   <!-- Symbole : cercle + filament -->
-  <g transform="translate(50, 50)">
-    <circle cx="0" cy="0" r="28" fill="none" stroke={colorAccent} stroke-width="1.2"/>
-    <path d="M -38 0 Q -19 -15, 0 0 Q 19 15, 38 0"
+  <g class="logo-symbol" transform="translate(50, 50)">
+    <circle class="logo-circle" cx="0" cy="0" r="28" fill="none" stroke={colorAccent} stroke-width="1.2"/>
+    <path class="logo-filament" d="M -38 0 Q -19 -15, 0 0 Q 19 15, 38 0"
           fill="none" stroke={colorAccent} stroke-width="1" stroke-linecap="round"/>
   </g>
 
   <!-- SBÉ -->
-  <text x="115" y="55"
+  <text class="logo-name" x="115" y="55"
         font-family="Cormorant Garamond, serif"
         font-size="32" font-weight="400"
         letter-spacing="4"
         fill={colorPrimary}>SBÉ</text>
 
   <!-- Sous-texte -->
-  <text x="115" y="72"
+  <text class="logo-tagline" x="115" y="72"
         font-family="Inter, sans-serif"
         font-size="7" font-weight="300"
         letter-spacing="3"

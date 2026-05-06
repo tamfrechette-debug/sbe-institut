@@ -50,10 +50,20 @@ const {
   </main>
   <Footer />
 
-  <!-- Scroll-reveal + header shadow on scroll. Re-init après chaque navigation View Transition. -->
+  <!-- Scroll-reveal + header shadow + advanced interactions. Re-init après chaque navigation View Transition. -->
   <script is:inline>
     function initAnimations() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      // === Logo draw-in (premier chargement de la session seulement) ===
+      const header = document.querySelector('.site-header');
+      if (header && !reduceMotion && !sessionStorage.getItem('sbe-logo-drawn')) {
+        header.classList.add('first-load');
+        sessionStorage.setItem('sbe-logo-drawn', '1');
+      }
+
+      if (reduceMotion) return;
 
       // === Scroll reveal ===
       const observer = new IntersectionObserver((entries) => {
@@ -71,7 +81,6 @@ const {
       });
 
       // === Header shadow on scroll ===
-      const header = document.querySelector('.site-header');
       const onScroll = () => {
         if (!header) return;
         if (window.scrollY > 50) header.classList.add('scrolled');
@@ -79,6 +88,92 @@ const {
       };
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      // === Magnetic buttons (curseur fin uniquement) ===
+      if (hasHover) {
+        document.querySelectorAll('.btn').forEach((btn) => {
+          if (btn.dataset.magneticBound) return;
+          btn.dataset.magneticBound = '1';
+          let raf = 0;
+          const onMove = (e) => {
+            const rect = btn.getBoundingClientRect();
+            const dx = e.clientX - rect.left - rect.width / 2;
+            const dy = e.clientY - rect.top - rect.height / 2;
+            const tx = Math.max(-10, Math.min(10, dx * 0.22));
+            const ty = Math.max(-10, Math.min(10, dy * 0.22));
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              btn.style.transform = `translate(${tx}px, ${ty - 2}px)`;
+            });
+          };
+          const onLeave = () => {
+            cancelAnimationFrame(raf);
+            btn.style.transform = '';
+          };
+          btn.addEventListener('mousemove', onMove);
+          btn.addEventListener('mouseleave', onLeave);
+        });
+
+        // === Department cards : tilt 3D (curseur fin uniquement) ===
+        document.querySelectorAll('.department-card').forEach((card) => {
+          if (card.dataset.tiltBound) return;
+          card.dataset.tiltBound = '1';
+          let raf = 0;
+          const onMove = (e) => {
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width - 0.5;
+            const py = (e.clientY - rect.top) / rect.height - 0.5;
+            const rotX = -py * 5;
+            const rotY = px * 5;
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+            });
+          };
+          const onLeave = () => {
+            cancelAnimationFrame(raf);
+            card.style.transform = '';
+          };
+          card.addEventListener('mousemove', onMove);
+          card.addEventListener('mouseleave', onLeave);
+        });
+      }
+
+      // === Compteur 01/02/03 : count-up à l'apparition dans le viewport ===
+      const counters = document.querySelectorAll('.value-item .number');
+      if (counters.length) {
+        const fmt = (n) => String(Math.max(0, Math.floor(n))).padStart(2, '0');
+        const animate = (el, target) => {
+          const duration = 1200;
+          const start = performance.now();
+          const tick = (now) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = fmt(target * eased);
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = fmt(target);
+          };
+          requestAnimationFrame(tick);
+        };
+        const counterObs = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              if (el.dataset.counted) { counterObs.unobserve(el); return; }
+              const target = parseInt(el.textContent.trim(), 10);
+              if (!isNaN(target)) {
+                el.dataset.counted = '1';
+                el.textContent = '00';
+                animate(el, target);
+              }
+              counterObs.unobserve(el);
+            }
+          });
+        }, { threshold: 0.5 });
+        counters.forEach((el) => {
+          if (!el.dataset.counted) counterObs.observe(el);
+        });
+      }
     }
 
     // Initial load
