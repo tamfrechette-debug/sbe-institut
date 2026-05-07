@@ -92,6 +92,11 @@ const navItems = [
     const btn = document.getElementById('mobileMenuBtn');
     const nav = document.getElementById('mainNav');
     if (!btn || !nav) return;
+    // Garde anti-double-binding : DOMContentLoaded ET astro:page-load
+    // se déclenchent tous les deux au premier chargement, ce qui dédoublait
+    // les listeners et faisait que le premier tap faisait ouvrir+fermer.
+    if (btn.dataset.bound === '1') return;
+    btn.dataset.bound = '1';
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
