@@ -876,6 +876,14 @@ section {
   .hero {
     min-height: 60vh;
   }
+  /* Hero des pages internes : compact, dimensionné par le contenu + padding.
+     Les inline min-height en vh (40-50vh) deviennent énormes sur les grands
+     téléphones (40vh d'un S22 = ~820px), créant un vide crème inutile sous
+     la tagline avant la section suivante. !important pour battre l'inline. */
+  .hero:not(.hero-home) {
+    min-height: auto !important;
+    padding: var(--espace-lg) var(--espace-md);
+  }
   /* Header sticky : retirer le backdrop-filter (coûteux sur iOS Safari ancien) */
   .site-header {
     backdrop-filter: none;
@@ -885,9 +893,6 @@ section {
 
 /* === Petits écrans (≤480px) : tweaks supplémentaires === */
 @media (max-width: 480px) {
-  .hero:not(.hero-home) {
-    min-height: 45vh;
-  }
   section {
     padding: var(--espace-lg) 0;
   }
@@ -1007,6 +1012,23 @@ section {
 
 .contact-info {
   padding: var(--espace-md);
+}
+
+/* Mobile : compacter la liste de coordonnées (gap énorme + padding inutiles
+   quand c'est empilé en colonne unique) */
+@media (max-width: 768px) {
+  .contact-grid {
+    gap: var(--espace-md);
+  }
+  .contact-info {
+    padding: 0;
+  }
+  .contact-info h4 {
+    margin-bottom: 0.25rem;
+  }
+  .contact-info p {
+    margin-bottom: 0;
+  }
 }
 
 .contact-info h4 {
