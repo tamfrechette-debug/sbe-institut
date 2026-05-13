@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 import '../styles/global.css';
 
 interface Props {
@@ -181,5 +182,6 @@ const {
     // Astro View Transitions: re-init après chaque changement de page
     document.addEventListener('astro:page-load', initAnimations);
   </script>
+  <Analytics />
 </body>
 </html>
